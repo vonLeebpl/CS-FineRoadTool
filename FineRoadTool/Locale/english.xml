@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language UniqueName="en" ReadableName="English" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Translations>
+    <Translation ID="FRT_DESCRIPTION" String="More road tool options." />
+    <!-- OPTIONS PANEL -->
+    <Translation ID="FRT_OPT_REDUCE_CATENARY_MAST_LABEL" String = "Reduce rail catenary masts" />
+    <Translation ID="FRT_OPT_REDUCE_CATENARY_MAST_TOOLTIP" String = "Reduce the number of catenary mast of rail lines from 3 to 1 per segment.\n" />
+    <Translation ID="FRT_OPT_RESET_BUTTON" String = "Reset tool window position" />
+    <Translation ID="FRT_OPT_ELEVATION_UP" String = "Elevation Up" />
+    <Translation ID="FRT_OPT_ELEVATION_DOWN" String = "Elevation Down" />
+    <Translation ID="FRT_OPT_RESET_ELEVATION" String = "Reset Elevation" />
+    <Translation ID="FRT_OPT_ELEVATION_STEP_UP" String = "Elevation Step Up" />
+    <Translation ID="FRT_OPT_ELEVATION_STEP_DOWN" String = "Elevation Step Down" />
+    <Translation ID="FRT_OPT_CYCLE_RIGHT" String = "Cycle Mods Right" />
+    <Translation ID="FRT_OPT_CYCLE_LEFT" String = "Cycle Mods Left" />
+    <Translation ID="FRT_OPT_TOGGLE_STRIGHT_SLOPE" String = "Toggle Stright Slope" />
+    <Translation ID="FRT_OPT_PRESS_ANY_KEY" String = "Press Any Key..." />
+    <!-- OPTIONS BUTTON -->
+    <Translation ID="FRT_OPBTN_METERS" String = "m" />
+    <Translation ID="FRT_OPBTN_NORMAL" String = "Nrm" />
+    <Translation ID="FRT_OPBTN_GROUND" String = "Gnd" />
+    <Translation ID="FRT_OPBTN_ELEVATED" String = "Elv" />
+    <Translation ID="FRT_OPBTN_BRIDGE" String = "Bdg" />
+    <Translation ID="FRT_OPBTN_TUNEL" String = "Tnl" />
+    <Translation ID="FRT_OPBTN_TOOLTIP" String = "Click here for Tool Options" />
+    <Translation ID="FRT_OPBTN_ELEVATION_STEP" String = "Elevation Step:" />
+    <Translation ID="FRT_OPBTN_ELEVATION_STEP_SLIDER_TOOLTIP" String = "{0} and {1} to change Elevation Step" />
+    <Translation ID="FRT_OPBTN_CYCLES" String = "Modes:" />
+    <Translation ID="FRT_OPBTN_CYCLES_NORMAL" String = "Normal: Unmodded road placement behavior" />
+    <Translation ID="FRT_OPBTN_CYCLES_GROUND" String = "Ground: Forces the ground to follow the elevation of the road" />
+    <Translation ID="FRT_OPBTN_CYCLES_ELEVATED" String = "Elevated: Forces the use of elevated pieces if available" />
+    <Translation ID="FRT_OPBTN_CYCLES_BRIDGE" String = "Bridge: Forces the use of bridge pieces if available" />
+    <Translation ID="FRT_OPBTN_CYCLES_TUNNEL" String = "Tunnel: Forces the use of tunnel pieces if available" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_LABEL" String = "Straight slope" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP1" String = "Makes the road go straight from A to B instead of following the terrain" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP2" String = " to toggle straight slope" />
+    <Translation ID="FRT_OPBTN_CYCLES_TOOLTIP" String = "{0} and {1}  to cycle Modes" />
+  </Translations>
+</Language>

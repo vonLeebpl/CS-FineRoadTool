@@ -18,28 +18,28 @@ namespace FineRoadTool
 
         public static readonly SavedInputKey elevationUp = new SavedInputKey(Settings.buildElevationUp, Settings.gameSettingsFile, DefaultSettings.buildElevationUp, true);
         public static readonly SavedInputKey elevationDown = new SavedInputKey(Settings.buildElevationDown, Settings.gameSettingsFile, DefaultSettings.buildElevationDown, true);
-        public static readonly SavedInputKey elevationReset = new SavedInputKey("elevationReset", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.Home, false, false, false), true);
+        public static readonly SavedInputKey elevationReset = new SavedInputKey("elevationReset", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.Home, false, false, false), true);
 
-        public static readonly SavedInputKey elevationStepUp = new SavedInputKey("elevationStepUp", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.UpArrow, true, false, false), true);
-        public static readonly SavedInputKey elevationStepDown = new SavedInputKey("elevationStepDown", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.DownArrow, true, false, false), true);
+        public static readonly SavedInputKey elevationStepUp = new SavedInputKey("elevationStepUp", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.UpArrow, true, false, false), true);
+        public static readonly SavedInputKey elevationStepDown = new SavedInputKey("elevationStepDown", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.DownArrow, true, false, false), true);
 
-        public static readonly SavedInputKey modesCycleRight = new SavedInputKey("modesCycleRight", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.RightArrow, true, false, false), true);
-        public static readonly SavedInputKey modesCycleLeft = new SavedInputKey("modesCycleLeft", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.LeftArrow, true, false, false), true);
+        public static readonly SavedInputKey modesCycleRight = new SavedInputKey("modesCycleRight", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.RightArrow, true, false, false), true);
+        public static readonly SavedInputKey modesCycleLeft = new SavedInputKey("modesCycleLeft", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.LeftArrow, true, false, false), true);
 
-        public static readonly SavedInputKey toggleStraightSlope = new SavedInputKey("toggleStraightSlope", FineRoadTool.settingsFileName, SavedInputKey.Encode(KeyCode.S, false, true, false), true);
+        public static readonly SavedInputKey toggleStraightSlope = new SavedInputKey("toggleStraightSlope", FineRoadTooLoader.settingsFileName, SavedInputKey.Encode(KeyCode.S, false, true, false), true);
 
         private int count = 0;
 
         private void Awake()
         {
-            AddKeymapping("Elevation Up", elevationUp);
-            AddKeymapping("Elevation Down", elevationDown);
-            AddKeymapping("Reset Elevation", elevationReset);
-            AddKeymapping("Elevation Step Up", elevationStepUp);
-            AddKeymapping("Elevation Step Down", elevationStepDown);
-            AddKeymapping("Cycle Modes Right", modesCycleRight);
-            AddKeymapping("Cycle Modes Left", modesCycleLeft);
-            AddKeymapping("Toggle Straight Slope", toggleStraightSlope);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_ELEVATION_UP"), elevationUp);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_ELEVATION_DOWN"), elevationDown);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_RESET_ELEVATION"), elevationReset);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_ELEVATION_STEP_UP"), elevationStepUp);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_ELEVATION_STEP_DOWN"), elevationStepDown);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_CYCLE_RIGHT"), modesCycleRight);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_CYCLE_LEFT"), modesCycleLeft);
+            AddKeymapping(FineRoadTool.translation.GetTranslation("FRT_OPT_TOGGLE_STRIGHT_SLOPE"), toggleStraightSlope);
         }
 
         private void AddKeymapping(string label, SavedInputKey savedInputKey)
@@ -219,7 +219,7 @@ namespace FineRoadTool
                 this.m_EditingBindingCategory = p.source.stringUserData;
                 UIButton uIButton = p.source as UIButton;
                 uIButton.buttonsMask = (UIMouseButton.Left | UIMouseButton.Right | UIMouseButton.Middle | UIMouseButton.Special0 | UIMouseButton.Special1 | UIMouseButton.Special2 | UIMouseButton.Special3);
-                uIButton.text = "Press any key";
+                uIButton.text = FineRoadTool.translation.GetTranslation("FRT_OPT_PRESS_ANY_KEY");
                 p.source.Focus();
                 UIView.PushModal(p.source);
             }

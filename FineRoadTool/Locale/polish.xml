@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language UniqueName="pl" ReadableName="Polish" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Translations>
+    <Translation ID="FRT_DESCRIPTION" String="Więcej narzędzi i opcji w budowaniu dróg." />
+    <!-- OPTIONS PANEL -->
+    <Translation ID="FRT_OPT_REDUCE_CATENARY_MAST_LABEL" String = "Zmniejsz ilość masztów podtrzymujących" />
+    <Translation ID="FRT_OPT_REDUCE_CATENARY_MAST_TOOLTIP" String = "Zmniejsza liczbę masztów podtrzymujących trakcję z 3 do 1 na segment." />
+    <Translation ID="FRT_OPT_RESET_BUTTON" String = "Reset pozycji okna narzędzi" />
+    <Translation ID="FRT_OPT_ELEVATION_UP" String = "Zwiększ podniesienie" />
+    <Translation ID="FRT_OPT_ELEVATION_DOWN" String = "Zmniejsz podniesienie" />
+    <Translation ID="FRT_OPT_RESET_ELEVATION" String = "Reset podniesienia" />
+    <Translation ID="FRT_OPT_ELEVATION_STEP_UP" String = "Zwiększ krok podniesienia" />
+    <Translation ID="FRT_OPT_ELEVATION_STEP_DOWN" String = "Zmniejsz krok podniesienia" />
+    <Translation ID="FRT_OPT_CYCLE_RIGHT" String = "Przełączanie trybów w prawo" />
+    <Translation ID="FRT_OPT_CYCLE_LEFT" String = "Przełączanie trybów w lewo" />
+    <Translation ID="FRT_OPT_TOGGLE_STRIGHT_SLOPE" String = "Włącz/Wyłącz równomierny spadek" />
+    <Translation ID="FRT_OPT_PRESS_ANY_KEY" String = "Wciśnij klawisz ..." />
+    <!-- OPTIONS BUTTON -->
+    <Translation ID="FRT_OPBTN_METERS" String = "m" />
+    <Translation ID="FRT_OPBTN_NORMAL" String = "Nrm" />
+    <Translation ID="FRT_OPBTN_GROUND" String = "Gnt" />
+    <Translation ID="FRT_OPBTN_ELEVATED" String = "Pdn" />
+    <Translation ID="FRT_OPBTN_BRIDGE" String = "Mst" />
+    <Translation ID="FRT_OPBTN_TUNEL" String = "Tnl" />
+    <Translation ID="FRT_OPBTN_TOOLTIP" String = "Panel opcji" />
+    <Translation ID="FRT_OPBTN_ELEVATION_STEP" String = "Krok podniesienia:" />
+    <Translation ID="FRT_OPBTN_ELEVATION_STEP_SLIDER_TOOLTIP" String = "{0} i {1} by zmienić krok podniesienia" />
+    <Translation ID="FRT_OPBTN_CYCLES" String = "Tryby:" />
+    <Translation ID="FRT_OPBTN_CYCLES_NORMAL" String = "Normalny: Budowa dróg jak bez użycia modów" />
+    <Translation ID="FRT_OPBTN_CYCLES_GROUND" String = "Gruntowy: Zmusza by grunt formował się wraz z nachyleniem" />
+    <Translation ID="FRT_OPBTN_CYCLES_ELEVATED" String = "Podniesiony: Wymusza używanie podpór jeśli to możliwe" />
+    <Translation ID="FRT_OPBTN_CYCLES_BRIDGE" String = "Mostowy: Wymusza używanie mostów jeśli to możliwe" />
+    <Translation ID="FRT_OPBTN_CYCLES_TUNNEL" String = "Tunelowy: Wymusza tworzenie tuneli jeśli to możliwe" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_LABEL" String = "Równomierne nachylenie" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP1" String = "Wymusza równomierne nachylenie drogi pomiędzy punktem A i B, pomijając rzeźbę terenu" />
+    <Translation ID="FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP2" String = " aby włączyć/wyłączyć równomierne nachylenie" />
+    <Translation ID="FRT_OPBTN_CYCLES_TOOLTIP" String = "{0} i {1} aby zmienić tryb" />
+  </Translations>
+</Language>

@@ -7,7 +7,7 @@ namespace FineRoadTool
 {
     public class DebugUtils
     {
-        public const string modPrefix = "[Fine Road Tool " + ModInfo.version + "] ";
+        public const string modPrefix = "[Fine Road Tool " + FineRoadTool.version + "] ";
 
         public static void Message(string message)
         {

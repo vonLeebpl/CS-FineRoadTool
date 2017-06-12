@@ -50,9 +50,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModInfo.cs" />
     <Compile Include="DebugUtils.cs" />
     <Compile Include="FineRoadTool.cs" />
+    <Compile Include="FineRoadTooLoader.cs" />
     <Compile Include="NetSkins_Support.cs" />
     <Compile Include="OptionsKeymapping.cs">
       <SubType>Code</SubType>
@@ -63,6 +63,10 @@
     <Compile Include="RoadAIWrapper.cs" />
     <Compile Include="RoadPrefab.cs" />
     <Compile Include="SJA_Support.cs" />
+    <Compile Include="TranslationFramework\Language.cs" />
+    <Compile Include="TranslationFramework\TranslatableAttribute.cs" />
+    <Compile Include="TranslationFramework\Translation.cs" />
+    <Compile Include="TranslationFramework\Util.cs" />
     <Compile Include="UIToolOptionsButton.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,11 +100,17 @@
     <EmbeddedResource Include="Icons\TunnelModeHovered.png" />
     <EmbeddedResource Include="Icons\TunnelModePressed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Locale\english.xml" />
+    <Content Include="Locale\polish.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)"
-del "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)\$(TargetFileName)"
-xcopy /y "$(TargetPath)" "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)"</PostBuildEvent>
+    <PostBuildEvent>mkdir "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
+del "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)\$(TargetFileName)"
+xcopy /y "$(TargetPath)" "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
+mkdir "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(TargetName)"\Locale
+xcopy /y "$(ProjectDir)\Locale" "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(TargetName)\Locale" /s /e</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

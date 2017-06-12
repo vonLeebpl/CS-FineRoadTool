@@ -27,10 +27,10 @@ namespace FineRoadTool
 
         private UIComponent m_parent;
 
-        public static readonly SavedInt savedWindowX = new SavedInt("windowX", FineRoadTool.settingsFileName, -1000, true);
-        public static readonly SavedInt savedWindowY = new SavedInt("windowY", FineRoadTool.settingsFileName, -1000, true);
+        public static readonly SavedInt savedWindowX = new SavedInt("windowX", FineRoadTooLoader.settingsFileName, -1000, true);
+        public static readonly SavedInt savedWindowY = new SavedInt("windowY", FineRoadTooLoader.settingsFileName, -1000, true);
 
-        public static readonly SavedBool windowVisible = new SavedBool("windowVisible", FineRoadTool.settingsFileName, false, true);
+        public static readonly SavedBool windowVisible = new SavedBool("windowVisible", FineRoadTooLoader.settingsFileName, false, true);
 
         public static UIPanel toolOptionsPanel = null;
 
@@ -62,7 +62,7 @@ namespace FineRoadTool
 
         public void UpdateInfo()
         {
-            if (FineRoadTool.instance == null) return;
+            if (FineRoadTooLoader.instance == null) return;
 
             if (parent != null)
             {
@@ -82,37 +82,37 @@ namespace FineRoadTool
                 return;
             }
 
-            m_button.text = m_elevationStepLabel.text = FineRoadTool.instance.elevationStep + "m\n";
-            m_elevationStepSlider.value = FineRoadTool.instance.elevationStep;
-            m_straightSlope.isChecked = FineRoadTool.instance.straightSlope;
+            m_button.text = m_elevationStepLabel.text = FineRoadTooLoader.instance.elevationStep + FineRoadTool.translation.GetTranslation("FRT_OPBTN_METERS") + "\n";
+            m_elevationStepSlider.value = FineRoadTooLoader.instance.elevationStep;
+            m_straightSlope.isChecked = FineRoadTooLoader.instance.straightSlope;
 
-            m_button.normalFgSprite = FineRoadTool.instance.straightSlope ? "ToolbarIconGroup1Hovered" : null;
+            m_button.normalFgSprite = FineRoadTooLoader.instance.straightSlope ? "ToolbarIconGroup1Hovered" : null;
 
-            switch (FineRoadTool.instance.mode)
+            switch (FineRoadTooLoader.instance.mode)
             {
                 case Mode.Normal:
-                    m_button.text += "Nrm\n";
+                    m_button.text += FineRoadTool.translation.GetTranslation("FRT_OPBTN_NORMAL") + "\n";
                     m_normalModeButton.SimulateClick();
                     break;
                 case Mode.Ground:
-                    m_button.text += "Gnd\n";
+                    m_button.text += FineRoadTool.translation.GetTranslation("FRT_OPBTN_GROUND") + "\n"; ;
                     m_groundModeButton.SimulateClick();
                     break;
                 case Mode.Elevated:
-                    m_button.text += "Elv\n";
+                    m_button.text += FineRoadTool.translation.GetTranslation("FRT_OPBTN_ELEVATED") + "\n"; ;
                     m_elevatedModeButton.SimulateClick();
                     break;
                 case Mode.Bridge:
-                    m_button.text += "Bdg\n";
+                    m_button.text += FineRoadTool.translation.GetTranslation("FRT_OPBTN_BRIDGE") + "\n"; ;
                     m_bridgeModeButton.SimulateClick();
                     break;
                 case Mode.Tunnel:
-                    m_button.text += "Tnl\n";
+                    m_button.text += FineRoadTool.translation.GetTranslation("FRT_OPBTN_TUNEL") + "\n"; ;
                     m_tunnelModeButton.SimulateClick();
                     break;
             }
 
-            m_button.text += FineRoadTool.instance.elevation + "m";
+            m_button.text += FineRoadTooLoader.instance.elevation + FineRoadTool.translation.GetTranslation("FRT_OPBTN_METERS") + "\n"; ;
         }
 
         private void CreateButton()
@@ -125,7 +125,7 @@ namespace FineRoadTool
             m_button.playAudioEvents = true;
             m_button.relativePosition = Vector2.zero;
 
-            m_button.tooltip = "Fine Road Tool " + ModInfo.version + "\n\nClick here for Tool Options";
+            m_button.tooltip = "Fine Road Tool " + FineRoadTool.version + "\n\n" + FineRoadTool.translation.GetTranslation("FRT_OPBTN_TOOLTIP");
 
             m_button.textColor = Color.white;
             m_button.textScale = 0.7f;
@@ -211,7 +211,7 @@ namespace FineRoadTool
             // Elevation step
             UILabel label = m_toolOptionsPanel.AddUIComponent<UILabel>();
             label.textScale = 0.9f;
-            label.text = "Elevation Step:";
+            label.text = FineRoadTool.translation.GetTranslation("FRT_OPBTN_ELEVATION_STEP");
             label.relativePosition = new Vector2(8, 8);
             label.SendToBack();
 
@@ -239,7 +239,13 @@ namespace FineRoadTool
             m_elevationStepSlider.size = new Vector2(sliderPanel.width - 20 - m_elevationStepLabel.width - 8, 18);
             m_elevationStepSlider.relativePosition = new Vector2(10, 10);
 
-            m_elevationStepSlider.tooltip = OptionsKeymapping.elevationStepUp.ToLocalizedString("KEYNAME") + " and " + OptionsKeymapping.elevationStepDown.ToLocalizedString("KEYNAME") + " to change Elevation Step";
+
+            // m_elevationStepSlider.tooltip = OptionsKeymapping.elevationStepUp.ToLocalizedString("KEYNAME") + " and " + OptionsKeymapping.elevationStepDown.ToLocalizedString("KEYNAME") + " to change Elevation Step";
+            m_elevationStepSlider.tooltip = string.Format(
+                FineRoadTool.translation.GetTranslation("FRT_OPBTN_ELEVATION_STEP_SLIDER_TOOLTIP"),
+                OptionsKeymapping.elevationStepUp.ToLocalizedString("KEYNAME"),
+                OptionsKeymapping.elevationStepDown.ToLocalizedString("KEYNAME")
+                );
 
             UISlicedSprite bgSlider = m_elevationStepSlider.AddUIComponent<UISlicedSprite>();
             bgSlider.atlas = m_toolOptionsPanel.atlas;
@@ -259,9 +265,9 @@ namespace FineRoadTool
 
             m_elevationStepSlider.eventValueChanged += (c, v) =>
             {
-                if (v != FineRoadTool.instance.elevationStep)
+                if (v != FineRoadTooLoader.instance.elevationStep)
                 {
-                    FineRoadTool.instance.elevationStep = (int)v;
+                    FineRoadTooLoader.instance.elevationStep = (int)v;
                     UpdateInfo();
                 }
             };
@@ -269,7 +275,7 @@ namespace FineRoadTool
             // Modes
             label = m_toolOptionsPanel.AddUIComponent<UILabel>();
             label.textScale = 0.9f;
-            label.text = "Modes:";
+            label.text = FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES");
             label.relativePosition = new Vector2(8, 72);
             label.SendToBack();
 
@@ -284,25 +290,27 @@ namespace FineRoadTool
             modePanel.autoLayoutPadding = new RectOffset(0, 4, 0, 0);
             modePanel.autoLayoutDirection = LayoutDirection.Horizontal;
 
-            m_normalModeButton = CreateModeCheckBox(modePanel, "NormalMode", "Normal: Unmodded road placement behavior");
-            m_groundModeButton = CreateModeCheckBox(modePanel, "GroundMode", "Ground: Forces the ground to follow the elevation of the road");
-            m_elevatedModeButton = CreateModeCheckBox(modePanel, "ElevatedMode", "Elevated: Forces the use of elevated pieces if available");
-            m_bridgeModeButton = CreateModeCheckBox(modePanel, "BridgeMode", "Bridge: Forces the use of bridge pieces if available");
-            m_tunnelModeButton = CreateModeCheckBox(modePanel, "TunnelMode", "Tunnel: Forces the use of tunnel pieces if available");
+            m_normalModeButton = CreateModeCheckBox(modePanel, "NormalMode", FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_NORMAL"));
+            m_groundModeButton = CreateModeCheckBox(modePanel, "GroundMode", FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_GROUND"));
+            m_elevatedModeButton = CreateModeCheckBox(modePanel, "ElevatedMode", FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_ELEVATED"));
+            m_bridgeModeButton = CreateModeCheckBox(modePanel, "BridgeMode", FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_BRIDGE"));
+            m_tunnelModeButton = CreateModeCheckBox(modePanel, "TunnelMode", FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_TUNNEL"));
 
             modePanel.autoLayout = true;
 
             // Straight Slope
             m_straightSlope = CreateCheckBox(m_toolOptionsPanel);
             m_straightSlope.name = "FRT_StraightSlope";
-            m_straightSlope.label.text = "Straight slope";
-            m_straightSlope.tooltip = "Makes the road go straight from A to B instead of following the terrain\n\n" + OptionsKeymapping.toggleStraightSlope.ToLocalizedString("KEYNAME") + " to toggle straight slope";
+            m_straightSlope.label.text = FineRoadTool.translation.GetTranslation("FRT_OPBTN_STRIGHT_SLOPE_LABEL");
+            m_straightSlope.tooltip = FineRoadTool.translation.GetTranslation("FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP1") + "\n\n" +
+                OptionsKeymapping.toggleStraightSlope.ToLocalizedString("KEYNAME") +
+                FineRoadTool.translation.GetTranslation("FRT_OPBTN_STRIGHT_SLOPE_TOOLTIP2");
             m_straightSlope.isChecked = false;
             m_straightSlope.relativePosition = new Vector3(8, 152);
 
             m_straightSlope.eventCheckChanged += (c, state) =>
             {
-                FineRoadTool.instance.straightSlope = state;
+                FineRoadTooLoader.instance.straightSlope = state;
             };
 
             m_normalModeButton.isChecked = true;
@@ -347,7 +355,11 @@ namespace FineRoadTool
             button.atlas = m_atlas;
             button.relativePosition = new Vector2(0, 0);
 
-            button.tooltip = toolTip + "\n\n" + OptionsKeymapping.modesCycleLeft.ToLocalizedString("KEYNAME") + " and " + OptionsKeymapping.modesCycleRight.ToLocalizedString("KEYNAME") + " to cycle Modes";
+            button.tooltip = toolTip + "\n\n" + string.Format(
+                FineRoadTool.translation.GetTranslation("FRT_OPBTN_CYCLES_TOOLTIP"),
+                OptionsKeymapping.modesCycleLeft.ToLocalizedString("KEYNAME"),
+                OptionsKeymapping.modesCycleRight.ToLocalizedString("KEYNAME")
+                );
 
             button.normalBgSprite = "OptionBase";
             button.hoveredBgSprite = "OptionBaseHovered";
@@ -380,11 +392,11 @@ namespace FineRoadTool
 
         private void UpdateMode()
         {
-            if (m_normalModeButton.isChecked) FineRoadTool.instance.mode = Mode.Normal;
-            if (m_groundModeButton.isChecked) FineRoadTool.instance.mode = Mode.Ground;
-            if (m_elevatedModeButton.isChecked) FineRoadTool.instance.mode = Mode.Elevated;
-            if (m_bridgeModeButton.isChecked) FineRoadTool.instance.mode = Mode.Bridge;
-            if (m_tunnelModeButton.isChecked) FineRoadTool.instance.mode = Mode.Tunnel;
+            if (m_normalModeButton.isChecked) FineRoadTooLoader.instance.mode = Mode.Normal;
+            if (m_groundModeButton.isChecked) FineRoadTooLoader.instance.mode = Mode.Ground;
+            if (m_elevatedModeButton.isChecked) FineRoadTooLoader.instance.mode = Mode.Elevated;
+            if (m_bridgeModeButton.isChecked) FineRoadTooLoader.instance.mode = Mode.Bridge;
+            if (m_tunnelModeButton.isChecked) FineRoadTooLoader.instance.mode = Mode.Tunnel;
         }
 
         private void LoadResources()
